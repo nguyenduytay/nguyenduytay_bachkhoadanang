@@ -9,7 +9,7 @@ function spinWheel() {
             image: "./image/anh-meme-1.webp"
         },
         {
-            title: "Gặp em anh bỗng muốn thờ <br> Vừa thờ thích ích thích vừa thờ ương thương.",
+            title: "Gặp em anh bỗng muốn thờ <br> Vừa thờ ích thích vừa thờ ương thương.",
             image: "./image/anh-meme-2.webp"
         },
         {
