@@ -134,23 +134,24 @@ function spinWheel() {
         isSpinning = true;
         result.textContent = '';
 
-        // quay ngẫu nhiên 
+        // quay wheel (vẫn có hiệu ứng)
         const randomSpin = 360 * (3 + Math.floor(Math.random() * 3)) + Math.floor(Math.random() * 360);
         currentRotation += randomSpin;
-
         wheel.style.transform = `rotate(${currentRotation}deg)`;
 
         setTimeout(() => {
-            const degree = currentRotation % 360;
-            const index = Math.floor((360 - degree) / 60) % 6;
+            // random index từ toàn bộ mảng prizes
+            const index = Math.floor(Math.random() * prizes.length);
+
             result.innerHTML =
                 `
-  <strong class="block text-center">${prizes[index].title}</strong>
-  <img src="${prizes[index].image}" 
-       alt="${prizes[index].title}" 
-       class="mx-auto mt-2 w-full max-h-48 object-cover rounded-lg"/>
-`;
+            <strong class="block text-center">${prizes[index].title}</strong>
+            <img src="${prizes[index].image}" 
+                 alt="${prizes[index].title}" 
+                 class="mx-auto mt-2 w-full max-h-48 object-cover rounded-lg"/>
+            `;
             isSpinning = false;
         }, 4200);
     });
+
 }
