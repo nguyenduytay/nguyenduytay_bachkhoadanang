@@ -167,7 +167,7 @@ a#profileLink:hover {
 }
 
 .card-invitation {
-    background: #fff;
+    background: #ce9494;
     border: 1px solid #eee;
     border-radius: 10px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
@@ -210,7 +210,6 @@ a#profileLink:hover {
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
-  backdrop-filter: blur(5px);
   animation: fadeIn 0.3s ease;
 }
 

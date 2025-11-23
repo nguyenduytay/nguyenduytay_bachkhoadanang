@@ -22,7 +22,7 @@
 
 <body class="bg-#906e73-50 min-h-screen flex flex-col items-center justify-center px-6 py-10">
 
-    <div class=" w-full flex">
+    <div class=" w-full flex ">
         <lottie-player src="./json/Christmas wind chimes.json" background="transparent" speed="1" loop autoplay
             class="scale-x-[-1]">
         </lottie-player>
@@ -34,7 +34,27 @@
         class="text-center text-white bg-rose-400 py-5 px-10 rounded-2xl shadow-lg mb-10 transform hover:scale-110 transition-transform duration-300">
         <h1 class="text-4xl font-dancing">Tháng Mười Một Ấm Áp</h1>
     </header>
-
+    <div class="flex flex-col-3 text-2xl">
+        <div class="flex flex-col justify-between">
+            <marquee behavior="scroll" direction="left" scrollamount="5">
+                Không chê anh nghèo lên xe anh đèo
+            </marquee>
+            <br>
+            <marquee behavior="scroll" direction="right" scrollamount="5">
+                Không chê anh nghèo lên xe anh đèo
+            </marquee>
+        </div>
+        <img src="./image/background.png" class="w-[50%] rounded-2xl">
+        <div class="flex flex-col justify-between">
+            <marquee behavior="scroll" direction="left" scrollamount="5">
+                Không chê anh nghèo lên xe anh đèo
+            </marquee>
+            <br>
+            <marquee behavior="scroll" direction="right" scrollamount="5">
+                Không chê anh nghèo lên xe anh đèo
+            </marquee>
+        </div>
+    </div>
     <!-- Main Content -->
     <main class="bg-white rounded-2xl shadow-lg max-w-2xl w-full p-8 text-center">
         <section class="space-y-4">
@@ -46,7 +66,7 @@
         </section>
     </main>
 
-    <div class="relative w-64 h-64 mt-10 mb-10">
+    <div class="relative w-64 h-64 mt-10">
         <!-- Vòng xoay -->
         <div id="wheel" class="absolute w-full h-full rounded-full border-8 border-yellow-400 spin" style="background: conic-gradient(
                #f87171 0deg 60deg,
@@ -58,6 +78,13 @@
              );">
         </div>
 
+        <!-- Mũi tên -->
+        <div class="absolute -top-6 left-1/2 -translate-x-1/2 
+                            w-0 h-0
+                            border-l-[12px] border-l-transparent
+                            border-r-[12px] border-r-transparent
+                            border-t-[20px] border-t-red-600
+                            "></div>
         <!-- Nút quay -->
         <button id="spinButton"
             class="absolute inset-0 m-auto w-20 h-20 bg-white text-blue-700 font-bold rounded-full shadow-lg hover:scale-110 transition-transform"
@@ -65,13 +92,8 @@
             Quay
         </button>
 
-        <!-- Mũi tên -->
-        <div class="absolute top-[-20px] left-1/2 -translate-x-1/2 w-0 h-0 
-                    border-l-[12px] border-l-transparent 
-                    border-r-[12px] border-r-transparent 
-                    border-b-[20px] border-b-red-600"></div>
     </div>
-    <p id="result" class="mt-6 text-xl font-semibold text-black"> ddd</p>
+    <p id="result" class="mt-2 text-xl font-semibold text-black"></p>
     <script src="script.js"></script>
 </body>
 

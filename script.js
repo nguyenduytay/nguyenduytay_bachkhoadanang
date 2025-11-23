@@ -2,10 +2,14 @@
 function openCard20_10() {
   window.location.href = "thiệp_20_10/index.html";
 }
-//
 function openCardMonth_10() {
   window.location.href = "thiệp_tháng_10/index.html";
 }
+function openCardMonth_11() {
+  window.location.href = "thiệp_tháng_11/index.html"
+}
+
+
 // Profile Card Toggle
 (function () {
   const link = document.getElementById("profileLink");
@@ -63,8 +67,9 @@ document.addEventListener("DOMContentLoaded", function () {
   // Cấu hình password modal
   initPasswordModal({
     passwords: {
+      thang11: "23072004",
       thang10: "23072004",
-      "20_10": "23072004",
+      ngay_20_10: "23072004",
     },
     onSuccess: function (cardType) {
       // Xử lý khi mật khẩu đúng
@@ -72,6 +77,8 @@ document.addEventListener("DOMContentLoaded", function () {
         openCardMonth_10();
       } else if (cardType === "20_10") {
         openCard20_10();
+      } else if (cardType === "thang11") {
+        openCardMonth_11();
       }
     },
     onCancel: function () {
@@ -84,7 +91,7 @@ document.addEventListener("DOMContentLoaded", function () {
 // Function mở thiệp tháng 10 (placeholder)
 function openCard() {
   // Thay thế bằng đường dẫn thực tế đến thiệp tháng 10
-  alert("Thiệp tháng 10 sẽ được mở ở đây!");
+  alert("Thiệp sẽ được mở ở đây!");
   // window.location.href = "thiệp_tháng_10/index.html";
 }
 
@@ -98,8 +105,9 @@ function openCard() {
 let currentCardType = "";
 let passwordConfig = {
   passwords: {
+    thang11: "23072004",
     thang10: "23072004",
-    "20_10": "23072004",
+    ngay_20_10: "23072004",
   },
   onSuccess: null, // Callback function khi mật khẩu đúng
   onCancel: null, // Callback function khi hủy
@@ -125,7 +133,7 @@ function initPasswordModal(config = {}) {
 
 /**
  * Hiển thị modal nhập mật khẩu
- * @param {string} cardType - Loại thiệp (thang10, 20_10, etc.)
+ * @param {string} cardType
  */
 function showPasswordModal(cardType) {
   currentCardType = cardType;

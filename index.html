@@ -1,114 +1,98 @@
 <!DOCTYPE html>
 <html lang="vi">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Gửi lời yêu thương</title>
-    <link rel="stylesheet" href="style.css" />
-    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
-  </head>
 
-  <body>
-    <div class="marquee">
-      <h1>Góc nhỏ của Tây – nơi chứa đầy yêu thương</h1>
-    </div>
-    <div class="profile-container">
-      <a href="#" id="profileLink">
-        <img
-          id="profileImage"
-          src="./image/monkey_close.png"
-          alt="avatar"
-          width="50"
-          height="50"
-        />
-      </a>
-      <div id="profileCard">
-        <button id="closeProfile" aria-label="Đóng">✕</button>
-        <img src="./image/founder.jpg" alt="avatar" />
-        <div class="profile-info">
-          <strong>ND-Tây</strong>
-          <div class="profile-role">Web developer • Đà Nẵng</div>
-          <p>
-            Xin chào! Mình là Nguyễn Duy Tây, sinh ngày 02/09/2004, thuộc cung
-            Xử Nữ (Virgo) ♍.<br />
-            Mình là người yêu thích sự hoàn hảo, cẩn thận trong từng chi tiết và
-            luôn cố gắng hoàn thành mọi việc một cách tốt nhất.
-          </p>
-          <p>
-            Cung Xử Nữ giúp mình có tư duy logic, tinh thần trách nhiệm cao và
-            luôn hướng tới sự chỉn chu, ngăn nắp trong cả học tập lẫn công việc.
-            Mình thích khám phá, học hỏi và không ngừng phát triển bản thân mỗi
-            ngày. 🌱
-          </p>
-        </div>
-        <div style="clear: both"></div>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gửi lời yêu thương</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+</head>
+
+<body>
+  <div class="marquee">
+    <h1>Góc nhỏ của Tây – nơi chứa đầy yêu thương</h1>
+  </div>
+  <div class="profile-container">
+    <a href="#" id="profileLink">
+      <img id="profileImage" src="./image/monkey_close.png" alt="avatar" width="50" height="50" />
+    </a>
+    <div id="profileCard">
+      <button id="closeProfile" aria-label="Đóng">✕</button>
+      <img src="./image/founder.jpg" alt="avatar" />
+      <div class="profile-info">
+        <strong>ND-Tây</strong>
+        <div class="profile-role">Web developer • Đà Nẵng</div>
+        <p>
+          Xin chào! Mình là Nguyễn Duy Tây, sinh ngày 02/09/2004, thuộc cung
+          Xử Nữ (Virgo) ♍.<br />
+          Mình là người yêu thích sự hoàn hảo, cẩn thận trong từng chi tiết và
+          luôn cố gắng hoàn thành mọi việc một cách tốt nhất.
+        </p>
+        <p>
+          Cung Xử Nữ giúp mình có tư duy logic, tinh thần trách nhiệm cao và
+          luôn hướng tới sự chỉn chu, ngăn nắp trong cả học tập lẫn công việc.
+          Mình thích khám phá, học hỏi và không ngừng phát triển bản thân mỗi
+          ngày. 🌱
+        </p>
       </div>
+      <div style="clear: both"></div>
     </div>
+  </div>
 
-    <div class="lottie-container">
-      <lottie-player
-        src="./json/Couple.json"
-        background="transparent"
-        speed="1"
-        style="width: 600px; height: 300px; min-width: 200px; min-height: 100px"
-        loop
-        autoplay
-      >
-      </lottie-player>
+  <div class="lottie-container">
+    <lottie-player src="./json/Couple.json" background="transparent" speed="1"
+      style="width: 600px; height: 300px; min-width: 200px; min-height: 100px" loop autoplay>
+    </lottie-player>
+  </div>
+
+  <div class="invitations">
+    <div class="card-invitation">
+      <p>Nhấn nút bên dưới để mở thiệp chúc tháng 11 nhé 💌</p>
+      <button onclick="showPasswordModal('thang11')">Mở thiệp</button>
     </div>
+    <div class="card-invitation">
+      <p>Nhấn nút bên dưới để mở thiệp chúc tháng 10 nhé 💌</p>
+      <button onclick="showPasswordModal('thang10')">Mở thiệp</button>
+    </div>
+    <div class="card-invitation">
+      <p>Nhấn nút bên dưới để mở thiệp 20/10 nhé 💌</p>
+      <button onclick="openCard20_10('ngay_20_10')">Mở thiệp</button>
+    </div>
+  </div>
 
-    <div class="invitations">
-      <div class="card-invitation">
-        <p>Nhấn nút bên dưới để mở thiệp chúc tháng 10 nhé 💌</p>
-        <button onclick="showPasswordModal('thang10')">Mở thiệp</button>
+  <!-- Modal nhập mật khẩu - Component tái sử dụng -->
+  <div id="passwordModal" class="password-modal">
+    <div class="password-modal-content">
+      <div class="password-modal-header">
+        <h3>🔐 Nhập mật khẩu</h3>
+        <button class="close-password-modal" onclick="closePasswordModal()">
+          &times;
+        </button>
       </div>
-      <div class="card-invitation">
-        <p>Nhấn nút bên dưới để mở thiệp 20/10 nhé 💌</p>
-        <button onclick="openCard20_10()">Mở thiệp</button>
+      <div class="lottie-container">
+        <lottie-player src="./json/Juggling Monkey.json" background="transparent" speed="1"
+          style="width: 200px; height: 100px" loop autoplay>
+        </lottie-player>
       </div>
-    </div>
-
-    <!-- Modal nhập mật khẩu - Component tái sử dụng -->
-    <div id="passwordModal" class="password-modal">
-      <div class="password-modal-content">
-        <div class="password-modal-header">
-          <h3>🔐 Nhập mật khẩu</h3>
-          <button class="close-password-modal" onclick="closePasswordModal()">
-            &times;
+      <div class="password-modal-body">
+        <p>Vui lòng nhập mật khẩu để mở thiệp:</p>
+        <input type="password" id="passwordInput" placeholder="Nhập mật khẩu..." autocomplete="off" />
+        <div class="password-actions">
+          <button onclick="closePasswordModal()" class="btn-cancel">
+            Hủy
+          </button>
+          <button onclick="checkPassword()" class="btn-submit">
+            Xác nhận
           </button>
         </div>
-        <div class="lottie-container">
-          <lottie-player
-            src="./json/Juggling Monkey.json"
-            background="transparent"
-            speed="1"
-            style="width: 200px; height: 100px"
-            loop
-            autoplay
-          >
-          </lottie-player>
-        </div>
-        <div class="password-modal-body">
-          <p>Vui lòng nhập mật khẩu để mở thiệp:</p>
-          <input
-            type="password"
-            id="passwordInput"
-            placeholder="Nhập mật khẩu..."
-            autocomplete="off"
-          />
-          <div class="password-actions">
-            <button onclick="closePasswordModal()" class="btn-cancel">
-              Hủy
-            </button>
-            <button onclick="checkPassword()" class="btn-submit">
-              Xác nhận
-            </button>
-          </div>
-          <div id="passwordError" class="password-error"></div>
-        </div>
+        <div id="passwordError" class="password-error"></div>
       </div>
     </div>
+  </div>
 
-    <script src="script.js"></script>
-  </body>
+  <script src="script.js"></script>
+</body>
+
 </html>
