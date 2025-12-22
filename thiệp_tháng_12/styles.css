@@ -1,0 +1,254 @@
+/*Áp dụng cho toàn bộ trang*/
+body {
+    /*Xóa khoảng trắng mặc định xung quanh trang*/
+    margin: 0;
+    /*Áp dụng màu nền đen tối*/
+    background: #0b1d2a;
+    /*Tắt thanh cuộn*/
+    overflow: hidden;
+}
+
+/*Class đại diện cho mỗi bông tuyết*/
+.snowflake {
+    /*Cho phép đặt vị trí tự do trên màn hình*/
+    position: absolute;
+    /*Bắt đầu ở trên màn hình (để rơi xuống)*/
+    top: -20px;
+    /*Kích thước bông tuyết (lấy từ biến CSS --size)*/
+    font-size: var(--size);
+    /*Màu trắng (để trông giống bông tuyết)*/
+    color: white;
+    /*Độ mờ (ngẫu nhiên → tạo chiều sâu)*/
+    opacity: var(--opacity);
+    /*Không cho người dùng bôi chọn tuyết*/
+    user-select: none;
+    /*Tuyết không chặn click chuột*/
+    pointer-events: none;
+    /*Chạy animation fall,
+        tốc độ đều,
+        lặp vô hạn*/
+    animation: fall linear infinite;
+    /*Thời gian animation (ngẫu nhiên → tạo hiệu ứng khác nhau cho mỗi bông tuyết)*/
+    animation-duration: var(--duration);
+}
+
+/*Định nghĩa animation tên fall*/
+@keyframes fall {
+
+    /*Bắt đầu ở trên màn hình, không xoay*/
+    0% {
+        /*Bông tuyết ở trên,
+            chưa xoay*/
+        transform: translateY(0) rotate(0deg);
+    }
+
+    /*Kết thúc ở dưới màn hình,
+        đã xoay 360 độ*/
+    100% {
+        /*Rơi xuống hết màn hình+xoay 1 vòng*/
+        transform: translateY(110vh) rotate(360deg);
+    }
+}
+
+/*Animation xoay ảnh trái phải*/
+.animate-swing-bell {
+    animation: swing 2s ease-in-out infinite;
+}
+
+@keyframes swing {
+    0% {
+        transform: rotate(-20deg);
+    }
+
+    50% {
+        transform: rotate(20deg);
+    }
+
+    100% {
+        transform: rotate(-20deg);
+    }
+}
+
+/* rời từ trên xuống vị trí cố định*/
+.fly-down-1,
+.fly-down-2,
+.fly-down-3,
+.fly-down-4 {
+    opacity: 0;
+}
+
+.fly-down-1 {
+    animation: drop 10s ease-out forwards;
+}
+
+.fly-down-2 {
+    animation: drop 10s ease-out forwards;
+    animation-delay: 2s;
+}
+
+.fly-down-3 {
+    animation: drop 10s ease-out forwards;
+    animation-delay: 4s;
+}
+
+.fly-down-4 {
+    animation: drop 10s ease-out forwards;
+    animation-delay: 6s;
+}
+
+@keyframes drop {
+    from {
+        transform: translateY(-100vh);
+        opacity: 1;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* animation xoay theo đường cong*/
+.fly-curve {
+    animation: curve 10s ease-in-out forwards;
+    opacity: 0;
+}
+
+@keyframes curve {
+
+    /* Bắt đầu từ trên trời */
+    0% {
+        transform: translateY(-100vh);
+        opacity: 0;
+    }
+
+    /* Chạm màn – hiện ra */
+    10% {
+        opacity: 1;
+    }
+
+    /* Sang trái 1/4 màn */
+    25% {
+        transform: translate(-100vw, -20vh);
+    }
+
+    /* Sang phải 2/4 màn (1/2 màn) */
+    45% {
+        transform: translate(50vw, -30vh);
+    }
+
+    /* Sang trái 3/4 màn */
+    70% {
+        transform: translate(-75vw, -20vh);
+    }
+
+    /* Quay về đúng vị trí cũ */
+    100% {
+        transform: translate(0, 0);
+        opacity: 1;
+    }
+}
+
+/* Gallery Masonry */
+.gallery-wrapper {
+    padding-top: 20px;
+    width: 100%;
+}
+
+.gallery-wrapper::-webkit-scrollbar {
+    display: none;
+    /* Ẩn scrollbar trên Chrome/Safari */
+}
+
+/* Gallery Layout - Dàn ngang dãn đều & Co giãn theo màn hình */
+/* Gallery Layout - Dây nối full & Ảnh cao thấp xen kẽ */
+.grid-image {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    flex-wrap: nowrap;
+    width: 100%;
+    /* Full màn hình */
+    max-width: none;
+    /* Bỏ giới hạn để dãn hết mức */
+    margin: 0;
+    padding: 0 20px;
+    position: relative;
+}
+
+/* Sợi dây nối ngang chạy suốt màn hình */
+.grid-image::before {
+    content: '';
+    position: absolute;
+    top: 5px;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.4);
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.2);
+    z-index: 1;
+}
+
+.grid-item {
+    flex: 1;
+    position: relative;
+    max-width: 200px;
+    display: flex;
+    justify-content: center;
+}
+
+/* Kiểu mặc định cho dây treo (Cao) */
+.grid-item {
+    padding-top: 40px;
+}
+
+.grid-item::before {
+    content: '';
+    position: absolute;
+    top: 5px;
+    left: 50%;
+    width: 2px;
+    height: 40px;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.3));
+    transform: translateX(-50%);
+    z-index: 1;
+}
+
+/* Ảnh ở vị trí Thấp (Xen kẽ các ảnh chẵn) */
+.grid-item:nth-child(even) {
+    padding-top: 80px;
+}
+
+.grid-item:nth-child(even)::before {
+    height: 80px;
+}
+
+/* Nút thắt tại điểm giao dây ngang */
+.grid-item::after {
+    content: '';
+    position: absolute;
+    top: 3px;
+    left: 50%;
+    width: 6px;
+    height: 6px;
+    background: #ffd700;
+    border-radius: 50%;
+    transform: translateX(-50%);
+    box-shadow: 0 0 8px #ffd700;
+    z-index: 2;
+}
+
+.grid-item img {
+    width: 90%;
+    height: auto;
+    transition: all 0.3s ease;
+    border: 0px solid white;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.4);
+    display: block;
+}
+
+.grid-item img:hover {
+    transform: scale(1.1) rotate(2deg);
+    /* Thêm chút xoay cho sinh động */
+    z-index: 10;
+}
