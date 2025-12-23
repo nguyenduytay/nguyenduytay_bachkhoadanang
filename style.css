@@ -54,6 +54,43 @@ body {
   }
 }
 
+.note {
+  position: relative;
+  left: 0;
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  z-index: 9999;
+}
+
+.note p {
+  display: inline-block;
+  font-size: 2em;
+  color: #e91e63;
+  animation: moveNote 30s linear infinite;
+}
+
+@keyframes note {
+  from {
+    transform: translateX(100%);
+  }
+
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes moveNote {
+  0% {
+    transform: translateX(100%);
+  }
+
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+
 #profileLink img {
   border-radius: 50%;
   transition: transform 0.3s ease;
