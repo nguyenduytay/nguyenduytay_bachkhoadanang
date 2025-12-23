@@ -46,53 +46,79 @@
       style="width: 600px; height: 300px; min-width: 200px; min-height: 100px" loop autoplay>
     </lottie-player>
   </div>
-
-  <div class="invitations">
-    <div class="card-invitation">
-      <p>Nhấn nút bên dưới để mở thiệp chúc tháng 11 nhé người đẹp 💌</p>
-      <button onclick="showPasswordModal('thang11')">Mở thiệp</button>
-    </div>
-    <div class="card-invitation">
-      <p>Nhấn nút bên dưới để mở thiệp chúc tháng 10 nhé 💌</p>
-      <button onclick="showPasswordModal('thang10')">Mở thiệp</button>
-    </div>
-    <div class="card-invitation">
-      <p>Nhấn nút bên dưới để mở thiệp 20/10 nhé 💌</p>
-      <button onclick="openCard20_10('ngay_20_10')">Mở thiệp</button>
-    </div>
-  </div>
-
-  <!-- Modal nhập mật khẩu - Component tái sử dụng -->
-  <div id="passwordModal" class="password-modal">
-    <div class="password-modal-content">
-      <div class="password-modal-header">
-        <h3>🔐 Nhập mật khẩu</h3>
-        <button class="close-password-modal" onclick="closePasswordModal()">
-          &times;
+  <div>
+    <div class="grid grid-row-2 items-center gap-2">
+      <span id="typing-label" class="text-sm text-gray-600 text-center px-4 h-[80px]">
+      </span>
+      <div class="flex flex-row gap-2 justify-center">
+        <input type="text" id="check_month" class="p-2 rounded border border-gray-400 w-80 text-center"
+          placeholder="VD: 11/2025" />
+        <button onclick="checkMonth()" class="bg-blue-700 text-white p-2 rounded">
+          Kiểm tra
         </button>
       </div>
-      <div class="lottie-container">
-        <lottie-player src="./json/Juggling Monkey.json" background="transparent" speed="1"
-          style="width: 200px; height: 100px" loop autoplay>
-        </lottie-player>
-      </div>
-      <div class="password-modal-body">
-        <p>Vui lòng nhập mật khẩu để mở thiệp:</p>
-        <input type="password" id="passwordInput" placeholder="Nhập mật khẩu..." autocomplete="off" />
-        <div class="password-actions">
-          <button onclick="closePasswordModal()" class="btn-cancel">
-            Hủy
-          </button>
-          <button onclick="checkPassword()" class="btn-submit">
-            Xác nhận
-          </button>
-        </div>
-        <div id="passwordError" class="password-error"></div>
+    </div>
+    <div class="pt-5">
+      <div class="marquee">
+        <h1 class="text-sm">Có 8 hoa tay - Ngồi sau xe máy bị say - Thích ăn hoa quả (nhác đi mua) - không thích ăn tía
+          tô
+          - ngủ thì muộn (cú đêm)</h1>
       </div>
     </div>
-  </div>
 
-  <script src="script.js"></script>
+    <div class="invitations">
+      <div class="card-invitation" data-month="12/2025">
+        <p>Nhấn nút bên dưới để mở thiệp chúc tháng 12/2025 nhé người đẹp 💌</p>
+        <button onclick="showPasswordModal('thang12')">Mở thiệp</button>
+      </div>
+      <div class="card-invitation" data-month="11/2025">
+        <p>Nhấn nút bên dưới để mở thiệp chúc tháng 11/2025 nhé người đẹp 💌</p>
+        <button onclick="showPasswordModal('thang11')">Mở thiệp</button>
+      </div>
+
+      <div class="card-invitation" data-month="10/2025">
+        <p>Nhấn nút bên dưới để mở thiệp chúc tháng 10/2025 nhé 💌</p>
+        <button onclick="showPasswordModal('thang10')">Mở thiệp</button>
+      </div>
+
+      <div class="card-invitation" data-month="20/10/2025">
+        <p>Nhấn nút bên dưới để mở thiệp 20/10/2025 nhé 💌</p>
+        <button onclick="openCard20_10('ngay_20_10')">Mở thiệp</button>
+      </div>
+    </div>
+
+
+    <!-- Modal nhập mật khẩu - Component tái sử dụng -->
+    <div id="passwordModal" class="password-modal">
+      <div class="password-modal-content">
+        <div class="password-modal-header">
+          <h3>🔐 Nhập mật khẩu</h3>
+          <button class="close-password-modal" onclick="closePasswordModal()">
+            &times;
+          </button>
+        </div>
+        <div class="lottie-container">
+          <lottie-player src="./json/Juggling Monkey.json" background="transparent" speed="1"
+            style="width: 200px; height: 100px" loop autoplay>
+          </lottie-player>
+        </div>
+        <div class="password-modal-body">
+          <p>Vui lòng nhập mật khẩu để mở thiệp:</p>
+          <input type="password" id="passwordInput" placeholder="Nhập mật khẩu..." autocomplete="off" />
+          <div class="password-actions">
+            <button onclick="closePasswordModal()" class="btn-cancel">
+              Hủy
+            </button>
+            <button onclick="checkPassword()" class="btn-submit">
+              Xác nhận
+            </button>
+          </div>
+          <div id="passwordError" class="password-error"></div>
+        </div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
 </body>
 
 </html>

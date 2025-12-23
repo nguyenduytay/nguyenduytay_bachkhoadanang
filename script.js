@@ -6,9 +6,11 @@ function openCardMonth_10() {
   window.location.href = "thiệp_tháng_10/index.html";
 }
 function openCardMonth_11() {
-  window.location.href = "thiệp_tháng_11/index.html"
+  window.location.href = "thiệp_tháng_11/index.html";
 }
-
+function openCardMonth_12() {
+  window.location.href = "thiệp_tháng_12/index.html";
+}
 
 // Profile Card Toggle
 (function () {
@@ -67,13 +69,18 @@ document.addEventListener("DOMContentLoaded", function () {
   // Cấu hình password modal
   initPasswordModal({
     passwords: {
+      thang12: "23072004",
       thang11: "23072004",
       thang10: "23072004",
       ngay_20_10: "23072004",
     },
     onSuccess: function (cardType) {
       // Xử lý khi mật khẩu đúng
-      if (cardType === "thang10") {
+      if (cardType === "thang12") {
+        openCardMonth_12();
+      } else if (cardType === "thang11") {
+        openCardMonth_11();
+      } else if (cardType === "thang10") {
         openCardMonth_10();
       } else if (cardType === "20_10") {
         openCard20_10();
@@ -290,3 +297,46 @@ function getAvailableCardTypes() {
 function hasPassword(cardType) {
   return cardType in passwordConfig.passwords;
 }
+function checkMonth() {
+  const input = document.getElementById("check_month");
+  const value = input.value.trim();
+  const cards = document.querySelectorAll(".card-invitation");
+
+  let found = false;
+
+  cards.forEach((card) => {
+    const month = card.getAttribute("data-month");
+
+    if (month === value) {
+      card.style.display = "block";
+      found = true;
+    } else {
+      card.style.display = "none";
+    }
+  });
+
+  if (!found && value !== "") {
+    alert("Không có thiệp cho thời gian này 💔");
+  }
+}
+
+document.getElementById("check_month").addEventListener("keydown", (e) => {
+  if (e.key === "Enter") checkMonth();
+});
+
+const label = document.getElementById("typing-label");
+
+const text = "Nhập tháng và năm\n(ví dụ: 11/2025)\nđể mở thiệp 💌";
+
+let i = 0;
+
+function typeLabel() {
+  if (i <= text.length) {
+    label.innerHTML = text.slice(0, i).replace(/\n/g, "<br>");
+    i++;
+  } else {
+    setTimeout(() => (i = 0), 2000);
+  }
+}
+
+setInterval(typeLabel, 80);

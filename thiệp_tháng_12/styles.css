@@ -4,8 +4,9 @@ body {
     margin: 0;
     /*Áp dụng màu nền đen tối*/
     background: #0b1d2a;
-    /*Tắt thanh cuộn*/
-    overflow: hidden;
+    /*Cho phép cuộn dọc, ẩn cuộn ngang*/
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 
 /*Class đại diện cho mỗi bông tuyết*/
@@ -251,4 +252,81 @@ body {
     transform: scale(1.1) rotate(2deg);
     /* Thêm chút xoay cho sinh động */
     z-index: 10;
+}
+
+/*font chữ*/
+.font-imperial {
+    font-family: 'Imperial Script', cursive;
+}
+
+.font-playfair {
+    font-family: 'Playfair Display', serif;
+}
+
+.font-quicksand {
+    font-family: 'Quicksand', sans-serif;
+}
+
+@keyframes blink {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.5;
+    }
+}
+
+.animate-blink {
+    animation: blink 2s infinite;
+}
+
+/* Thư tay */
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&display=swap');
+
+.font-handwriting {
+    font-family: 'Dancing Script', cursive;
+}
+
+/* Hiệu ứng mở thư khi click */
+.letter-open #letterContent {
+    opacity: 1 !important;
+    transform: translate(-50%, -50%) !important;
+    pointer-events: auto !important;
+}
+
+.letter-open .group-hover\:-translate-y-2 {
+    transform: translateY(-20px) !important;
+}
+
+/* Hiệu ứng viết chữ */
+.writing-animation {
+    overflow: hidden;
+    border-right: 2px solid #e53e3e;
+    white-space: nowrap;
+    animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
+}
+
+@keyframes typing {
+    from {
+        width: 0
+    }
+
+    to {
+        width: 100%
+    }
+}
+
+@keyframes blink-caret {
+
+    from,
+    to {
+        border-color: transparent
+    }
+
+    50% {
+        border-color: #e53e3e
+    }
 }

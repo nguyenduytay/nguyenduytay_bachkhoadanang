@@ -1,202 +1,209 @@
 body {
-    font-family: "Segoe UI", sans-serif;
-    background: #fffafc;
-    text-align: center;
-    margin: 0;
-    padding: 0;
+  font-family: "Segoe UI", sans-serif;
+  background: #fffafc;
+  text-align: center;
+  margin: 0;
+  padding: 0;
 }
 
 /* iframe đè toàn trang */
 #overlayFrame {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border: none;
-    z-index: 1000;
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+  z-index: 1000;
 }
 
 .marquee {
-    position: relative;
-    left: 0;
-    width: 100%;
-    white-space: nowrap;
-    overflow: hidden;
-    z-index: 9999;
+  position: relative;
+  left: 0;
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  z-index: 9999;
 }
 
 .marquee h1 {
-    display: inline-block;
-    font-size: 2em;
-    color: #e91e63;
-    animation: moveText 10s linear infinite;
+  display: inline-block;
+  font-size: 2em;
+  color: #e91e63;
+  animation: moveText 10s linear infinite;
 }
 
 @keyframes marquee {
-    from {
-        transform: translateX(100%);
-    }
+  from {
+    transform: translateX(100%);
+  }
 
-    to {
-        transform: translateX(-100%);
-    }
+  to {
+    transform: translateX(-100%);
+  }
 }
 
 @keyframes moveText {
-    0% {
-        transform: translateX(100%);
-    }
+  0% {
+    transform: translateX(100%);
+  }
 
-    100% {
-        transform: translateX(-100%);
-    }
+  100% {
+    transform: translateX(-100%);
+  }
 }
 
 #profileLink img {
-    border-radius: 50%;
-    transition: transform 0.3s ease;
+  border-radius: 50%;
+  transition: transform 0.3s ease;
 }
 
 #profileLink img:hover {
-    transform: scale(1.1);
-    cursor: pointer;
+  transform: scale(1.1);
+  cursor: pointer;
 }
 
 
 a#profileLink {
-    color: #881a3d;
-    text-decoration: none;
-    font-weight: bold;
-    font-size: 1.1em;
-    margin-left: 5px;
-    cursor: pointer;
-    /* Thêm con trỏ khi hover */
-    text-align: center;
-    /* Căn giữa liên kết */
-    display: inline-block;
-    transition: transform 0.3s ease, color 0.3s ease;
+  color: #881a3d;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1.1em;
+  margin-left: 5px;
+  cursor: pointer;
+  /* Thêm con trỏ khi hover */
+  text-align: center;
+  /* Căn giữa liên kết */
+  display: inline-block;
+  transition: transform 0.3s ease, color 0.3s ease;
 }
 
 a#profileLink:hover {
-    text-decoration: none;
-    color: #b71c1c;
-    transform: scale(1.4);
-    /* Phóng to khi hover */
+  text-decoration: none;
+  color: #b71c1c;
+  transform: scale(1.4);
+  /* Phóng to khi hover */
 }
 
 .profile-container {
-    position: relative;
-    display: inline-block;
-    display: flex;
-    justify-content: center;
+  position: relative;
+  display: inline-block;
+  display: flex;
+  justify-content: center;
 }
 
 /* --- Profile Card --- */
 #profileCard {
-    display: none;
-    position: absolute;
-    top: 70px;
-    width: 280px;
-    background: #fff;
-    border: 1px solid #ddd;
-    padding: 12px;
-    box-shadow: 0 6px 18px rgba(0, 0, 0, .12);
-    border-radius: 8px;
-    z-index: 1000;
-    align-items: center;
+  display: none;
+  position: absolute;
+  top: 70px;
+  width: 280px;
+  background: #fff;
+  border: 1px solid #ddd;
+  padding: 12px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, .12);
+  border-radius: 8px;
+  z-index: 1000;
+  align-items: center;
 }
 
 #profileCard img {
-    width: 80px;
-    height: 100px;
-    border-radius: 30%;
-    float: left;
-    margin-right: 10px;
+  width: 80px;
+  height: 100px;
+  border-radius: 30%;
+  float: left;
+  margin-right: 10px;
 }
 
 #closeProfile {
-    float: right;
-    border: none;
-    background: transparent;
-    font-size: 16px;
-    cursor: pointer;
-    color: #666;
+  float: right;
+  border: none;
+  background: transparent;
+  font-size: 16px;
+  cursor: pointer;
+  color: #666;
 }
 
 .profile-info {
-    overflow: hidden;
-    text-align: left;
+  overflow: hidden;
+  text-align: left;
 }
 
 .profile-role {
-    font-size: 13px;
-    color: #555;
+  font-size: 13px;
+  color: #555;
 }
 
 .profile-info p {
-    font-size: 13px;
-    margin-top: 8px;
-    color: #333;
+  font-size: 13px;
+  margin-top: 8px;
+  color: #333;
 }
 
 /* --- Lottie animation --- */
 .lottie-container {
-    margin-top: 30px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 /* --- Invitations --- */
 .invitations {
-    margin-top: 10px;
-    /* Khoảng cách trên */
-    display: flex;
-    /* Sử dụng flexbox */
-    justify-content: center;
-    /* Khoảng cách giữa các thẻ */
-    flex-direction: column;
-    /* Sắp xếp theo cột trên di động */
-    flex-wrap: wrap;
-    /* Cho phép xuống dòng nếu cần */
-    text-align: center;
-    /* Căn giữa nội dung bên trong thẻ */
-    align-items: center;
+  margin-top: 10px;
+  /* Khoảng cách trên */
+  display: flex;
+  /* Sử dụng flexbox */
+  justify-content: center;
+  /* Khoảng cách giữa các thẻ */
+  flex-direction: column;
+  /* Sắp xếp theo cột trên di động */
+  flex-wrap: wrap;
+  /* Cho phép xuống dòng nếu cần */
+  text-align: center;
+  /* Căn giữa nội dung bên trong thẻ */
+  align-items: center;
 }
 
 .card-invitation {
-    background: #ce9494;
-    border: 1px solid #eee;
-    border-radius: 10px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    width: 300px;
-    text-align: center;
-    transition: transform 0.3s ease;
-    margin-bottom: 20px;
+  background: #ce9494;
+  border: 1px solid #eee;
+  display: none;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  width: 300px;
+  text-align: center;
+  transition: transform 0.3s ease;
+  margin-bottom: 20px;
 }
 
 .card-invitation:hover {
-    transform: scale(1.1);
-    /* Phóng to khi hover */
-    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2);
-    /* Bóng đậm hơn */
+  transform: scale(1.1);
+  /* Phóng to khi hover */
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2);
+  /* Bóng đậm hơn */
 }
 
 .card-invitation button {
-    background: #ff4e8a;
-    color: white;
-    border: none;
-    padding: 10px 18px;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background 0.3s ease;
+  background: #ff4e8a;
+  color: white;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease;
 }
 
 .card-invitation button:hover {
-    background: #e63d7a;
+  background: #e63d7a;
+}
+
+.card-hidden {
+  opacity: 0;
+  transform: scale(0.9);
+  display: none;
 }
 
 /* ===== PASSWORD MODAL CSS ===== */
@@ -310,7 +317,8 @@ a#profileLink:hover {
   justify-content: flex-end;
 }
 
-.btn-cancel, .btn-submit {
+.btn-cancel,
+.btn-submit {
   padding: 10px 20px;
   border: none;
   border-radius: 8px;
@@ -350,8 +358,13 @@ a#profileLink:hover {
 
 /* Password Modal Animations */
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
 
 @keyframes slideIn {
@@ -359,6 +372,7 @@ a#profileLink:hover {
     transform: translateY(-50px);
     opacity: 0;
   }
+
   to {
     transform: translateY(0);
     opacity: 1;
@@ -366,9 +380,19 @@ a#profileLink:hover {
 }
 
 @keyframes shake {
-  0%, 100% { transform: translateX(0); }
-  25% { transform: translateX(-5px); }
-  75% { transform: translateX(5px); }
+
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+
+  25% {
+    transform: translateX(-5px);
+  }
+
+  75% {
+    transform: translateX(5px);
+  }
 }
 
 /* Responsive cho password modal */
@@ -377,32 +401,33 @@ a#profileLink:hover {
     margin: 20% auto;
     width: 95%;
   }
-  
+
   .password-modal-header {
     padding: 15px;
   }
-  
+
   .password-modal-header h3 {
     font-size: 1.1em;
   }
-  
+
   .password-modal-body {
     padding: 20px;
   }
-  
+
   .password-actions {
     flex-direction: column;
   }
-  
-  .btn-cancel, .btn-submit {
+
+  .btn-cancel,
+  .btn-submit {
     width: 100%;
   }
-  
+
   .password-modal .lottie-container {
     padding: 15px;
     margin: 5px 15px;
   }
-  
+
   .password-modal .lottie-container lottie-player {
     width: 200px !important;
     height: 100px !important;
