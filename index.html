@@ -4,121 +4,128 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Gửi lời yêu thương</title>
+  <title>Gửi lời yêu thương | ND-Tây</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="style.css" />
   <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+  <style>
+    /* Inline emergency override for initial load if CSS is heavy */
+    body {
+      background-color: #0a0a1f;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+  </style>
 </head>
 
 <body>
-  <div class="marquee">
-    <h1>Góc nhỏ của Tây – nơi chứa đầy yêu thương</h1>
-  </div>
-  <div class="profile-container">
-    <a href="#" id="profileLink">
-      <img id="profileImage" src="./image/monkey_close.png" alt="avatar" width="50" height="50" />
-    </a>
-    <div id="profileCard">
-      <button id="closeProfile" aria-label="Đóng">✕</button>
-      <img src="./image/founder.jpg" alt="avatar" />
-      <div class="profile-info">
-        <strong>ND-Tây</strong>
-        <div class="profile-role">Web developer • Đà Nẵng</div>
-        <p>
-          Xin chào! Mình là Nguyễn Duy Tây, sinh ngày 02/09/2004, thuộc cung
-          Xử Nữ (Virgo) ♍.<br />
-          Mình là người yêu thích sự hoàn hảo, cẩn thận trong từng chi tiết và
-          luôn cố gắng hoàn thành mọi việc một cách tốt nhất.
-        </p>
-        <p>
-          Cung Xử Nữ giúp mình có tư duy logic, tinh thần trách nhiệm cao và
-          luôn hướng tới sự chỉn chu, ngăn nắp trong cả học tập lẫn công việc.
-          Mình thích khám phá, học hỏi và không ngừng phát triển bản thân mỗi
-          ngày. 🌱
-        </p>
-      </div>
-      <div style="clear: both"></div>
-    </div>
-  </div>
+  <!-- ==================== MARQUEE HEADER ==================== -->
+  <header class="marquee">
+    <h1>✨ Góc nhỏ của Tây – nơi chứa đầy yêu thương ✨</h1>
+  </header>
 
+  <!-- ==================== PROFILE SECTION ==================== -->
+  <section class="profile-container">
+    <a href="#" id="profileLink" title="Xem thông tin của mình">
+      <img id="profileImage" src="./image/monkey_close.png" alt="avatar" width="60" height="60"
+        class="rounded-full shadow-lg" />
+    </a>
+
+    <div id="profileCard" class="glass-panel">
+      <button id="closeProfile" aria-label="Đóng">✕</button>
+      <div class="flex flex-col items-center text-center">
+        <img src="./image/founder.jpg" alt="avatar" class="shadow-xl" />
+        <div class="profile-info">
+          <strong class="gold-glow">Nguyễn Duy Tây</strong>
+          <div class="profile-role">Web Developer • Đà Nẵng</div>
+          <div class="mt-4 space-y-3">
+            <p>
+              Chào cậu! Mình là <strong>Xử Nữ ♍</strong> (02/09/2004). Một người luôn hướng tới sự chỉn chu và tỉ mỉ.
+            </p>
+            <p>
+              Cung Xử Nữ giúp mình luôn trách nhiệm và ngăn nắp. Mình yêu lập trình và thích tạo ra những điều ý nghĩa
+              qua code. 🌱
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== LOTTIE ANIMATION ==================== -->
   <div class="lottie-container">
     <lottie-player src="./json/Couple.json" background="transparent" speed="1"
-      style="width: 600px; height: 300px; min-width: 200px; min-height: 100px" loop autoplay>
+      style="width: 100%; max-width: 500px; height: 300px;" loop autoplay>
     </lottie-player>
   </div>
-  <div>
-    <div class="grid grid-row-2 items-center gap-2">
-      <span id="typing-label" class="text-sm text-gray-600 text-center px-4 h-[80px]">
-      </span>
-      <div class="flex flex-row gap-2 justify-center">
-        <input type="text" id="check_month" class="p-2 rounded border border-gray-400 w-80 text-center"
-          placeholder="VD: 11/2025" />
-        <button onclick="checkMonth()" class="bg-blue-700 text-white p-2 rounded">
-          Kiểm tra
-        </button>
-      </div>
-    </div>
-    <div class="pt-5">
-      <div class="note">
-        <p class="text-sm">Có 8 hoa tay - Ngồi sau xe máy bị say - Thích ăn hoa quả (nhác đi mua) - không thích ăn tía
-          tô
-          - ngủ thì muộn (cú đêm)</h1>
+
+  <!-- ==================== MAIN CONTENT ==================== -->
+  <main class="w-full flex flex-col items-center px-4 mb-20">
+
+    <!-- MONTH CHECKER -->
+    <div class="checker-wrapper glass-panel">
+      <span id="typing-label" class="italic"></span>
+
+      <div class="input-group">
+        <input type="text" id="check_month" placeholder="VD: 01/2026" autocomplete="off" />
+        <button onclick="checkMonth()" class="btn-check">Kiểm tra</button>
       </div>
     </div>
 
-    <div class="invitations">
+    <!-- INVITATION CARDS -->
+    <div class="invitations w-full">
+      <div class="card-invitation" data-month="1/2026">
+        <p>Gửi cậu một món quà nhỏ cho <strong>Tháng 1/2026</strong> nồng nàn 💌</p>
+        <button onclick="showPasswordModal('thang1_2026')">Mở thiệp ngay</button>
+      </div>
       <div class="card-invitation" data-month="12/2025">
-        <p>Nhấn nút bên dưới để mở thiệp chúc tháng 12/2025 nhé người đẹp 💌</p>
-        <button onclick="showPasswordModal('thang12')">Mở thiệp</button>
+        <p>Mời người đẹp mở thiệp chúc <strong>Tháng 12/2025</strong> nhé 💌</p>
+        <button onclick="showPasswordModal('thang12')">Mở thiệp ngay</button>
       </div>
       <div class="card-invitation" data-month="11/2025">
-        <p>Nhấn nút bên dưới để mở thiệp chúc tháng 11/2025 nhé người đẹp 💌</p>
-        <button onclick="showPasswordModal('thang11')">Mở thiệp</button>
+        <p>Thiệp chúc <strong>Tháng 11/2025</strong> đã sẵn sàng dành cho cậu 💌</p>
+        <button onclick="showPasswordModal('thang11')">Mở thiệp ngay</button>
       </div>
-
       <div class="card-invitation" data-month="10/2025">
-        <p>Nhấn nút bên dưới để mở thiệp chúc tháng 10/2025 nhé 💌</p>
-        <button onclick="showPasswordModal('thang10')">Mở thiệp</button>
+        <p>Nhấn để xem điều bất ngờ trong <strong>Tháng 10/2025</strong> nhé 💌</p>
+        <button onclick="showPasswordModal('thang10')">Mở thiệp ngay</button>
       </div>
-
       <div class="card-invitation" data-month="20/10/2025">
-        <p>Nhấn nút bên dưới để mở thiệp 20/10/2025 nhé 💌</p>
-        <button onclick="openCard20_10('ngay_20_10')">Mở thiệp</button>
+        <p>Món quà đặc biệt dành riêng cho <strong>Ngày 20/10</strong> 🌹</p>
+        <button onclick="openCard20_10('ngay_20_10')">Mở thiệp ngay</button>
       </div>
     </div>
 
-
-    <!-- Modal nhập mật khẩu - Component tái sử dụng -->
-    <div id="passwordModal" class="password-modal">
+    <!-- PASSWORD MODAL -->
+    <div id="passwordModal" class="password-modal" style="display: none;">
       <div class="password-modal-content">
         <div class="password-modal-header">
-          <h3>🔐 Nhập mật khẩu</h3>
-          <button class="close-password-modal" onclick="closePasswordModal()">
-            &times;
-          </button>
-        </div>
-        <div class="lottie-container">
-          <lottie-player src="./json/Juggling Monkey.json" background="transparent" speed="1"
-            style="width: 200px; height: 100px" loop autoplay>
-          </lottie-player>
+          <h3>🔐 Bảo mật thiệp</h3>
+          <button class="close-password-modal" onclick="closePasswordModal()">&times;</button>
         </div>
         <div class="password-modal-body">
-          <p>Vui lòng nhập mật khẩu để mở thiệp:</p>
-          <input type="password" id="passwordInput" placeholder="Nhập mật khẩu..." autocomplete="off" />
-          <div class="password-actions">
-            <button onclick="closePasswordModal()" class="btn-cancel">
-              Hủy
-            </button>
-            <button onclick="checkPassword()" class="btn-submit">
-              Xác nhận
-            </button>
+          <div class="flex justify-center mb-6">
+            <lottie-player src="./json/Juggling Monkey.json" background="transparent" speed="1"
+              style="width: 150px; height: 100px" loop autoplay>
+            </lottie-player>
           </div>
-          <div id="passwordError" class="password-error"></div>
+          <p class="text-center mb-4">Nhập mật khẩu để mở thiệp của cậu:</p>
+          <input type="password" id="passwordInput" placeholder="Mật khẩu của chúng mình..." autocomplete="off" />
+          <div class="password-actions">
+            <button onclick="closePasswordModal()" class="btn-cancel">Hủy</button>
+            <button onclick="checkPassword()" class="btn-submit">Xác nhận</button>
+          </div>
+          <div id="passwordError" class="password-error mt-4 text-center text-sm"></div>
         </div>
       </div>
     </div>
 
-    <script src="script.js"></script>
+  </main>
+
+  <!-- ==================== JAVASCRIPT ==================== -->
+  <script src="script.js"></script>
 </body>
 
 </html>

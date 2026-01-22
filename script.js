@@ -1,18 +1,46 @@
-// Invitation Card Navigation
+// ===================================================
+// NAVIGATION FUNCTIONS - Điều hướng đến các trang thiệp
+// ===================================================
+
+/**
+ * Mở thiệp ngày 20/10
+ */
 function openCard20_10() {
   window.location.href = "thiệp_20_10/index.html";
 }
+
+/**
+ * Mở thiệp tháng 10/2025
+ */
 function openCardMonth_10() {
   window.location.href = "thiệp_tháng_10/index.html";
 }
+
+/**
+ * Mở thiệp tháng 11/2025
+ */
 function openCardMonth_11() {
   window.location.href = "thiệp_tháng_11/index.html";
 }
+
+/**
+ * Mở thiệp tháng 12/2025
+ */
 function openCardMonth_12() {
   window.location.href = "thiệp_tháng_12/index.html";
 }
 
-// Profile Card Toggle
+/**
+ * Mở thiệp tháng 1/2026
+ */
+function openCardMonth_1_2026() {
+  window.location.href = "thiệp_tháng_1_2026/index.html";
+}
+
+// ===================================================
+// PROFILE CARD - Quản lý hiển thị thông tin profile
+// ===================================================
+
 (function () {
   const link = document.getElementById("profileLink");
   const img = document.getElementById("profileImage");
@@ -21,6 +49,9 @@ function openCardMonth_12() {
 
   let isProfileImageLoaded = false;
 
+  /**
+   * Toggle hiển thị profile card khi click vào avatar
+   */
   link.addEventListener("click", (e) => {
     e.preventDefault();
     if (card.style.display === "block") {
@@ -34,13 +65,18 @@ function openCardMonth_12() {
     }
   });
 
+  /**
+   * Đóng profile card khi click nút close
+   */
   closeBtn.addEventListener("click", () => {
     card.style.display = "none";
     img.src = "./image/monkey_close.png";
     isProfileImageLoaded = false;
   });
 
-  // Đóng khi click ra ngoài
+  /**
+   * Đóng profile card khi click ra ngoài
+   */
   document.addEventListener("click", (e) => {
     if (
       isProfileImageLoaded &&
@@ -54,7 +90,9 @@ function openCardMonth_12() {
     }
   });
 
-  // Tắt khi nhấn Esc
+  /**
+   * Đóng profile card khi nhấn phím Esc
+   */
   document.addEventListener("keydown", (e) => {
     if (e.key === "Escape") {
       card.style.display = "none";
@@ -64,54 +102,16 @@ function openCardMonth_12() {
   });
 })();
 
-// Khởi tạo Password Modal Component
-document.addEventListener("DOMContentLoaded", function () {
-  // Cấu hình password modal
-  initPasswordModal({
-    passwords: {
-      thang12: "23072004",
-      thang11: "23072004",
-      thang10: "23072004",
-      ngay_20_10: "23072004",
-    },
-    onSuccess: function (cardType) {
-      // Xử lý khi mật khẩu đúng
-      if (cardType === "thang12") {
-        openCardMonth_12();
-      } else if (cardType === "thang11") {
-        openCardMonth_11();
-      } else if (cardType === "thang10") {
-        openCardMonth_10();
-      } else if (cardType === "20_10") {
-        openCard20_10();
-      } else if (cardType === "thang11") {
-        openCardMonth_11();
-      }
-    },
-    onCancel: function () {
-      // Xử lý khi hủy (có thể thêm logic nếu cần)
-      console.log("Password modal cancelled");
-    },
-  });
-});
+// ===================================================
+// PASSWORD MODAL COMPONENT - Quản lý modal nhập mật khẩu
+// ===================================================
 
-// Function mở thiệp tháng 10 (placeholder)
-function openCard() {
-  // Thay thế bằng đường dẫn thực tế đến thiệp tháng 10
-  alert("Thiệp sẽ được mở ở đây!");
-  // window.location.href = "thiệp_tháng_10/index.html";
-}
-
-// ===== PASSWORD MODAL JAVASCRIPT =====
-/**
- * Password Modal Component - Tái sử dụng
- * Sử dụng: initPasswordModal() để khởi tạo
- */
-
-// Biến toàn cục
+// Biến toàn cục cho password modal
 let currentCardType = "";
 let passwordConfig = {
   passwords: {
+    thang1_2026: "23072004",
+    thang12: "23072004",
     thang11: "23072004",
     thang10: "23072004",
     ngay_20_10: "23072004",
@@ -121,11 +121,11 @@ let passwordConfig = {
 };
 
 /**
- * Khởi tạo Password Modal
- * @param {Object} config - Cấu hình
- * @param {Object} config.passwords - Object chứa mật khẩu cho từng loại
- * @param {Function} config.onSuccess - Callback khi mật khẩu đúng
- * @param {Function} config.onCancel - Callback khi hủy
+ * Khởi tạo Password Modal với cấu hình tùy chỉnh
+ * @param {Object} config - Cấu hình modal
+ * @param {Object} config.passwords - Object chứa mật khẩu cho từng loại thiệp
+ * @param {Function} config.onSuccess - Callback khi mật khẩu đúng (nhận cardType)
+ * @param {Function} config.onCancel - Callback khi hủy modal
  */
 function initPasswordModal(config = {}) {
   // Merge config với default
@@ -139,8 +139,8 @@ function initPasswordModal(config = {}) {
 }
 
 /**
- * Hiển thị modal nhập mật khẩu
- * @param {string} cardType
+ * Hiển thị modal nhập mật khẩu cho thiệp cụ thể
+ * @param {string} cardType - Loại thiệp (vd: "thang10", "thang11", "thang1_2026")
  */
 function showPasswordModal(cardType) {
   currentCardType = cardType;
@@ -153,7 +153,7 @@ function showPasswordModal(cardType) {
     return;
   }
 
-  modal.style.display = "block";
+  modal.style.display = "flex";
   passwordInput.value = "";
   errorDiv.textContent = "";
   passwordInput.focus();
@@ -179,7 +179,7 @@ function closePasswordModal() {
 }
 
 /**
- * Kiểm tra mật khẩu
+ * Kiểm tra mật khẩu người dùng nhập vào
  */
 function checkPassword() {
   const passwordInput = document.getElementById("passwordInput");
@@ -194,7 +194,7 @@ function checkPassword() {
   const correctPassword = passwordConfig.passwords[currentCardType];
 
   if (password === correctPassword) {
-    // Mật khẩu đúng
+    // Mật khẩu đúng - hiển thị thông báo success
     errorDiv.textContent = "";
     errorDiv.style.color = "#27ae60";
     errorDiv.textContent = "✅ Mật khẩu đúng! Đang chuyển hướng...";
@@ -210,7 +210,7 @@ function checkPassword() {
       closePasswordModal();
     }, 1000);
   } else {
-    // Mật khẩu sai
+    // Mật khẩu sai - hiển thị lỗi và shake effect
     errorDiv.style.color = "#e74c3c";
     errorDiv.textContent = "❌ Mật khẩu không đúng! Vui lòng thử lại.";
     passwordInput.value = "";
@@ -225,7 +225,7 @@ function checkPassword() {
 }
 
 /**
- * Thiết lập event listeners
+ * Thiết lập các event listeners cho password modal
  */
 function setupEventListeners() {
   const modal = document.getElementById("passwordModal");
@@ -247,7 +247,7 @@ function setupEventListeners() {
     }
   });
 
-  // Xử lý Enter key
+  // Xử lý Enter key để submit password
   passwordInput.addEventListener("keydown", function (e) {
     if (e.key === "Enter") {
       checkPassword();
@@ -283,7 +283,7 @@ function removePassword(cardType) {
 
 /**
  * Lấy danh sách tất cả loại thiệp có mật khẩu
- * @returns {Array} Mảng các loại thiệp
+ * @returns {Array<string>} Mảng các loại thiệp
  */
 function getAvailableCardTypes() {
   return Object.keys(passwordConfig.passwords);
@@ -297,6 +297,14 @@ function getAvailableCardTypes() {
 function hasPassword(cardType) {
   return cardType in passwordConfig.passwords;
 }
+
+// ===================================================
+// MONTH CHECKER - Kiểm tra và hiển thị thiệp theo tháng
+// ===================================================
+
+/**
+ * Kiểm tra tháng và hiển thị thiệp tương ứng
+ */
 function checkMonth() {
   const input = document.getElementById("check_month");
   const value = input.value.trim();
@@ -320,16 +328,17 @@ function checkMonth() {
   }
 }
 
-document.getElementById("check_month").addEventListener("keydown", (e) => {
-  if (e.key === "Enter") checkMonth();
-});
+// ===================================================
+// TYPING EFFECT - Hiệu ứng gõ chữ cho label hướng dẫn
+// ===================================================
 
 const label = document.getElementById("typing-label");
-
 const text = "Nhập tháng và năm\n(ví dụ: 11/2025)\nđể mở thiệp 💌";
-
 let i = 0;
 
+/**
+ * Hiệu ứng typing animation cho label
+ */
 function typeLabel() {
   if (i <= text.length) {
     label.innerHTML = text.slice(0, i).replace(/\n/g, "<br>");
@@ -339,4 +348,55 @@ function typeLabel() {
   }
 }
 
-setInterval(typeLabel, 80);
+// ===================================================
+// INITIALIZATION - Khởi tạo khi DOM đã load
+// ===================================================
+
+document.addEventListener("DOMContentLoaded", function () {
+  // Khởi tạo password modal với cấu hình
+  initPasswordModal({
+    passwords: {
+      thang1_2026: "23072004",
+      thang12: "23072004",
+      thang11: "23072004",
+      thang10: "23072004",
+      ngay_20_10: "23072004",
+    },
+    onSuccess: function (cardType) {
+      // Xử lý khi mật khẩu đúng - điều hướng đến thiệp tương ứng
+      switch (cardType) {
+        case "thang1_2026":
+          openCardMonth_1_2026();
+          break;
+        case "thang12":
+          openCardMonth_12();
+          break;
+        case "thang11":
+          openCardMonth_11();
+          break;
+        case "thang10":
+          openCardMonth_10();
+          break;
+        case "ngay_20_10":
+          openCard20_10();
+          break;
+        default:
+          console.warn("Unknown card type:", cardType);
+      }
+    },
+    onCancel: function () {
+      console.log("Password modal cancelled");
+    },
+  });
+
+  // Event listener cho Enter key trong input tháng
+  const checkMonthInput = document.getElementById("check_month");
+  if (checkMonthInput) {
+    checkMonthInput.addEventListener("keydown", (e) => {
+      if (e.key === "Enter") checkMonth();
+    });
+  }
+
+  // Khởi động typing effect
+  setInterval(typeLabel, 80);
+});

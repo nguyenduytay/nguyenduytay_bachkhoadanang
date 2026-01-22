@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html class="light" lang="vi">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>thiệp tháng 1 2026</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Spline+Sans:wght@300;400;500;600;700;800;900&amp;display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#f9f506",
+                        "navy-deep": "#0a0a1f",
+                        "lavender-soft": "#e6e6fa",
+                    },
+                    fontFamily: {
+                        "display": ["Spline Sans", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+    <style type="text/tailwindcss">
+        .glass-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
+        }
+        .gold-glow {
+            text-shadow: 0 0 10px rgba(249, 245, 6, 0.5), 0 0 20px rgba(249, 245, 6, 0.3);
+        }
+        .game-canvas {
+            cursor: crosshair;
+        }
+        @keyframes snowfall {
+            0% { transform: translateY(-10vh) rotate(0deg); }
+            100% { transform: translateY(110vh) rotate(360deg); }
+        }
+        .snow-particle {
+            position: absolute;
+            top: -10vh;
+            color: white;
+            opacity: 0.3;
+            animation: snowfall linear infinite;
+        }
+        
+        /* ===== IMAGE GALLERY STYLES - HORIZONTAL SCROLL ===== */
+        .image-container {
+            display: flex;
+            gap: 1.5rem;
+            padding: 1rem;
+            overflow-x: auto;
+            overflow-y: hidden;
+            scroll-behavior: smooth;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+        }
+        
+        /* Custom Scrollbar */
+        .image-container::-webkit-scrollbar {
+            height: 8px;
+        }
+        
+        .image-container::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+        }
+        
+        .image-container::-webkit-scrollbar-thumb {
+            background: rgba(249, 245, 6, 0.3);
+            border-radius: 10px;
+            transition: background 0.3s;
+        }
+        
+        .image-container::-webkit-scrollbar-thumb:hover {
+            background: rgba(249, 245, 6, 0.5);
+        }
+        
+        .image {
+            min-width: 400px;
+            max-width: 400px;
+            height: 500px;
+            background-size: cover;
+            background-position: center;
+            border-radius: 1rem;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInImage 0.6s ease-out forwards;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            scroll-snap-align: start;
+            flex-shrink: 0;
+        }
+        
+        .image::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to bottom, rgba(10, 10, 31, 0) 0%, rgba(10, 10, 31, 0.7) 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .image:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(249, 245, 6, 0.2);
+        }
+        
+        .image:hover::before {
+            opacity: 1;
+        }
+        
+        @keyframes fadeInImage {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Music Bars Animation */
+        .music-bars {
+            display: flex;
+            align-items: flex-end;
+            gap: 2px;
+            height: 16px;
+        }
+        .bar {
+            width: 3px;
+            background: #f9f506;
+            height: 20%;
+            border-radius: 1px;
+            transition: height 0.3s ease;
+        }
+        .playing .bar {
+            animation: music-bar-pulsate 0.8s ease-in-out infinite alternate;
+        }
+        .playing .bar:nth-child(2) { animation-delay: 0.2s; }
+        .playing .bar:nth-child(3) { animation-delay: 0.4s; }
+        .playing .bar:nth-child(1) { animation-delay: 0s; }
+
+        @keyframes music-bar-pulsate {
+            0% { height: 20%; }
+            100% { height: 100%; }
+        }
+
+        .music-float-bar {
+            position: fixed;
+            top: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 100;
+            width: fit-content;
+            min-width: 280px;
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            padding: 0.75rem 1.5rem;
+            background: rgba(10, 10, 31, 0.6);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 100px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+            animation: slideDown 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        @keyframes slideDown {
+            from { transform: translate(-50%, -100%); opacity: 0; }
+            to { transform: translate(-50%, 0); opacity: 1; }
+        }
+    </style>
+</head>
+
+<body class="bg-navy-deep font-display overflow-x-hidden selection:bg-primary/30">
+    <div class="relative min-h-screen w-full flex flex-col items-center overflow-hidden">
+        <div class="fixed inset-0 z-0 bg-cover bg-center"
+            style='background-image: linear-gradient(to bottom, rgba(10, 10, 31, 0.85), rgba(10, 10, 31, 0.95)), url("https://lh3.googleusercontent.com/aida-public/AB6AXuCJOxNadv5vIOhAJt17wDq7wMjTby8D-4uZEuJfAw4mJXfbPYUETHNWqhsgBXlwdEXEZRfQhQVvycJ_Tp5pTYscEPh4lM6KNh9NNV76rSokIEotoxEWCOwDsFhRlIN7T_4U7uHVzKCSSfSrqgDNQS41CLXdXMh4bjknotrWMLYGwyyC5clvQiOoFDC01DdjWsx5A1mb2UI9VOOIMHzw0A0udSQUl-miZraiFYzqnfzsQk7HCkf_QpLS1veMPgb_FU7iXhEopKIFUYk");'>
+        </div>
+        <div class="fixed inset-0 pointer-events-none z-10">
+            <div class="absolute top-10 left-[10%] text-primary/40 animate-pulse"><span
+                    class="material-symbols-outlined text-4xl">colors_spark</span></div>
+            <div class="absolute top-1/4 right-[15%] text-pink-300/40 animate-bounce duration-[3000ms]"><span
+                    class="material-symbols-outlined text-3xl">favorite</span></div>
+            <div class="absolute bottom-1/4 left-[20%] text-lavender-soft/30"><span
+                    class="material-symbols-outlined text-5xl">ac_unit</span></div>
+            <div class="snow-particle text-xs" style="left: 5%; animation-duration: 10s;">❅</div>
+            <div class="snow-particle text-sm" style="left: 25%; animation-duration: 15s; animation-delay: 2s;">❆</div>
+            <div class="snow-particle text-xs" style="left: 45%; animation-duration: 12s; animation-delay: 5s;">❅</div>
+            <div class="snow-particle text-lg" style="left: 65%; animation-duration: 18s; animation-delay: 1s;">❆</div>
+            <div class="snow-particle text-sm" style="left: 85%; animation-duration: 14s; animation-delay: 3s;">❅</div>
+        </div>
+
+        <audio id="bgMusic" loop src="audio/audio.mp3"></audio>
+
+        <div class="music-float-bar" id="musicPlayerUI">
+            <div class="flex items-center gap-3">
+                <div class="size-10 flex items-center justify-center rounded-full bg-primary/10 text-primary">
+                    <span class="material-symbols-outlined text-xl" id="musicNoteIcon">music_note</span>
+                </div>
+                <div class="flex flex-col">
+                    <span class="text-white text-xs font-bold tracking-wide">PHÁT NHẠC</span>
+                    <span class="text-white/60 text-[10px] uppercase tracking-widest font-medium">Giai điệu tình
+                        yêu</span>
+                </div>
+            </div>
+
+            <div class="flex items-center gap-6">
+                <div class="music-bars" id="musicBars">
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                </div>
+
+                <button id="musicToggleBtn"
+                    class="size-10 flex items-center justify-center rounded-full bg-primary text-navy-deep hover:scale-110 active:scale-95 transition-all shadow-[0_0_20px_rgba(249,245,6,0.3)]">
+                    <span class="material-symbols-outlined font-bold" id="playPauseBtn">play_arrow</span>
+                </button>
+            </div>
+        </div>
+
+        <header
+            class="sticky top-0 w-full z-50 px-6 py-6 md:px-20 lg:px-40 flex items-center justify-between glass-card border-none rounded-none">
+            <div class="flex items-center gap-2 text-white">
+                <div class="size-8 flex items-center justify-center rounded-full bg-primary/20 text-primary">
+                    <span class="material-symbols-outlined text-xl">favorite</span>
+                </div>
+                <h2 class="text-lg font-bold tracking-tight">Tháng 1 Nồng Nàn</h2>
+            </div>
+            <div class="flex items-center gap-6">
+                <!-- <nav
+                    class="hidden md:flex items-center gap-8 text-white/80 text-sm font-medium uppercase tracking-widest">
+                    <a class="hover:text-primary transition-colors" href="#story">Our Story</a>
+                    <a class="hover:text-primary transition-colors" href="#gallery">Gallery</a>
+                    <a class="hover:text-primary transition-colors" href="#game">Game</a>
+                </nav> -->
+                <div class="flex gap-2">
+                    <!-- Removed duplicate music button as we have the floating bar -->
+                </div>
+            </div>
+        </header>
+        <main class="relative z-20 px-4 w-full max-w-[1000px] flex flex-col items-center py-20 gap-24">
+            <section class="w-full" id="story">
+                <div class="glass-card w-full rounded-xl p-8 md:p-16 text-center flex flex-col items-center gap-8">
+                    <div
+                        class="inline-flex items-center gap-2 px-4 py-1 rounded-full bg-white/5 border border-white/10 text-lavender-soft text-xs font-semibold tracking-widest uppercase">
+                        <span class="material-symbols-outlined text-sm">auto_awesome</span>
+                        Gửi Người Thương Của Anh
+                    </div>
+                    <div class="flex flex-col gap-4">
+                        <h1
+                            class="text-primary text-4xl md:text-6xl font-black leading-tight tracking-tight gold-glow italic">
+                            Chào Tháng 1 Năm 2026
+                        </h1>
+                        <div
+                            class="h-1 w-32 bg-gradient-to-r from-transparent via-primary to-transparent mx-auto rounded-full">
+                        </div>
+                    </div>
+                    <div class="max-w-3xl space-y-6">
+                        <p class="text-white/95 text-lg md:text-xl font-light leading-relaxed italic">
+                            "Gửi tới người con gái anh thương 😍."
+                        </p>
+                        <p class="text-white/90 text-base md:text-lg leading-relaxed">
+                            Tháng Giêng này, anh mong rằng nụ cười của em sẽ luôn rạng rỡ trên đôi môi của em. Dù thời
+                            gian có trôi đi, tình
+                            yêu này vẫn sẽ mãi vẹn nguyên và không đổi thay. Chúc cho
+                            hành
+                            trình của chúng ta trong năm 2026 sẽ thuận lợi, thành công và đặc biệt nhất là anh mong sẽ
+                            nhanh đến bên cạnh em để bù đắp sự thiều vắng của anh trong thời gian qua.
+                        </p>
+                    </div>
+                    <div class="flex flex-col md:flex-row gap-4 mt-4">
+                    </div>
+                </div>
+            </section>
+            <section class="w-full" id="gallery">
+                <div class="flex flex-col gap-8">
+                    <div class="flex items-end justify-between">
+                        <div>
+                            <h2 class="text-white text-3xl font-bold tracking-tight">Khoảnh Khắc Lấp Lánh</h2>
+                            <p class="text-white/60 text-base">Từng giây phút anh đều nhớ về em.</p>
+                        </div>
+                        <button
+                            class="hidden md:flex items-center gap-2 text-primary text-sm font-bold border-b border-primary/20 pb-1 hover:border-primary transition-all">
+                            Xem tất cả <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                        </button>
+                    </div>
+                    <div class="image-container w-full">
+                        <div
+                            class="w-full h-full rounded-lg bg-center bg-cover transition-transform duration-1000 group-hover:scale-105 rounded-sm">
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+        <div
+            class="fixed bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-navy-deep to-transparent pointer-events-none z-10">
+        </div>
+    </div>
+
+    </div>
+
+    <!-- ==================== JAVASCRIPT ==================== -->
+    <script src="script.js"></script>
+</body>
+
+</html>

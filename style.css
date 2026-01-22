@@ -1,278 +1,341 @@
+/* ===================================================
+   RESET & BASE STYLES
+   =================================================== */
+:root {
+  --primary: #f9f506;
+  --secondary: #ff6b9d;
+  --navy-deep: #0a0a1f;
+  --navy-light: #16163a;
+  --glass-bg: rgba(255, 255, 255, 0.05);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --card-bg: rgba(26, 26, 58, 0.8);
+}
+
+* {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
 body {
-  font-family: "Segoe UI", sans-serif;
-  background: #fffafc;
-  text-align: center;
+  font-family:
+    "Segoe UI",
+    system-ui,
+    -apple-system,
+    sans-serif;
+  background-color: var(--navy-deep);
+  background-image:
+    radial-gradient(
+      circle at 20% 30%,
+      rgba(249, 245, 6, 0.05) 0%,
+      transparent 40%
+    ),
+    radial-gradient(
+      circle at 80% 70%,
+      rgba(255, 107, 157, 0.05) 0%,
+      transparent 40%
+    );
+  color: #fff;
   margin: 0;
   padding: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-x: hidden;
 }
 
-/* iframe đè toàn trang */
-#overlayFrame {
-  display: none;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  border: none;
-  z-index: 1000;
+/* ===================================================
+   UTILITIES
+   =================================================== */
+.glass-panel {
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+  border-radius: 1.5rem;
 }
 
+.gold-glow {
+  text-shadow: 0 0 10px rgba(249, 245, 6, 0.4);
+}
+
+/* ===================================================
+   MARQUEE
+   =================================================== */
 .marquee {
-  position: relative;
-  left: 0;
   width: 100%;
-  white-space: nowrap;
+  background: rgba(0, 0, 0, 0.3);
+  padding: 10px 0;
+  border-bottom: 1px solid var(--glass-border);
   overflow: hidden;
-  z-index: 9999;
+  white-space: nowrap;
 }
 
 .marquee h1 {
   display: inline-block;
-  font-size: 2em;
-  color: #e91e63;
-  animation: moveText 10s linear infinite;
-}
-
-@keyframes marquee {
-  from {
-    transform: translateX(100%);
-  }
-
-  to {
-    transform: translateX(-100%);
-  }
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: var(--primary);
+  margin: 0;
+  padding-left: 100%;
+  animation: moveText 20s linear infinite;
 }
 
 @keyframes moveText {
   0% {
-    transform: translateX(100%);
+    transform: translateX(0);
   }
-
   100% {
     transform: translateX(-100%);
   }
 }
 
-.note {
+/* ===================================================
+   PROFILE SECTION
+   =================================================== */
+.profile-container {
+  margin-top: 2rem;
+  z-index: 50;
   position: relative;
-  left: 0;
-  width: 100%;
-  white-space: nowrap;
-  overflow: hidden;
-  z-index: 9999;
 }
-
-.note p {
-  display: inline-block;
-  font-size: 2em;
-  color: #e91e63;
-  animation: moveNote 30s linear infinite;
-}
-
-@keyframes note {
-  from {
-    transform: translateX(100%);
-  }
-
-  to {
-    transform: translateX(-100%);
-  }
-}
-
-@keyframes moveNote {
-  0% {
-    transform: translateX(100%);
-  }
-
-  100% {
-    transform: translateX(-100%);
-  }
-}
-
 
 #profileLink img {
-  border-radius: 50%;
-  transition: transform 0.3s ease;
+  border: 3px solid var(--primary);
+  padding: 2px;
+  background: var(--navy-light);
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-#profileLink img:hover {
-  transform: scale(1.1);
-  cursor: pointer;
+#profileLink:hover img {
+  transform: scale(1.15) rotate(5deg);
 }
 
-
-a#profileLink {
-  color: #881a3d;
-  text-decoration: none;
-  font-weight: bold;
-  font-size: 1.1em;
-  margin-left: 5px;
-  cursor: pointer;
-  /* Thêm con trỏ khi hover */
-  text-align: center;
-  /* Căn giữa liên kết */
-  display: inline-block;
-  transition: transform 0.3s ease, color 0.3s ease;
-}
-
-a#profileLink:hover {
-  text-decoration: none;
-  color: #b71c1c;
-  transform: scale(1.4);
-  /* Phóng to khi hover */
-}
-
-.profile-container {
-  position: relative;
-  display: inline-block;
-  display: flex;
-  justify-content: center;
-}
-
-/* --- Profile Card --- */
 #profileCard {
   display: none;
   position: absolute;
   top: 70px;
-  width: 280px;
-  background: #fff;
-  border: 1px solid #ddd;
-  padding: 12px;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, .12);
-  border-radius: 8px;
-  z-index: 1000;
-  align-items: center;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 320px;
+  padding: 1.5rem;
+  background: var(--card-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: 1.5rem;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+  animation: slideUp 0.4s ease-out;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translate(-50%, 20px);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
 }
 
 #profileCard img {
-  width: 80px;
-  height: 100px;
-  border-radius: 30%;
-  float: left;
-  margin-right: 10px;
+  width: 90px;
+  height: 90px;
+  object-fit: cover;
+  border-radius: 1rem;
+  border: 2px solid var(--primary);
+  margin-bottom: 1rem;
 }
 
 #closeProfile {
-  float: right;
-  border: none;
-  background: transparent;
-  font-size: 16px;
-  cursor: pointer;
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
   color: #666;
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
 }
 
-.profile-info {
-  overflow: hidden;
-  text-align: left;
+.profile-info strong {
+  display: block;
+  font-size: 1.4rem;
+  color: var(--primary);
 }
 
 .profile-role {
-  font-size: 13px;
-  color: #555;
+  font-size: 0.85rem;
+  color: var(--secondary);
+  font-weight: 600;
+  margin-bottom: 0.5rem;
 }
 
 .profile-info p {
-  font-size: 13px;
-  margin-top: 8px;
-  color: #333;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.8);
+  margin: 0.5rem 0;
 }
 
-/* --- Lottie animation --- */
+/* ===================================================
+   LOTTIE
+   =================================================== */
 .lottie-container {
-  margin-top: 30px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  width: 100%;
+  max-width: 600px;
+  margin: 1rem auto;
+  pointer-events: none;
 }
 
-/* --- Invitations --- */
-.invitations {
-  margin-top: 10px;
-  /* Khoảng cách trên */
-  display: flex;
-  /* Sử dụng flexbox */
-  justify-content: center;
-  /* Khoảng cách giữa các thẻ */
-  flex-direction: column;
-  /* Sắp xếp theo cột trên di động */
-  flex-wrap: wrap;
-  /* Cho phép xuống dòng nếu cần */
+/* ===================================================
+   MONTH CHECKER
+   =================================================== */
+.checker-wrapper {
+  width: 95%;
+  max-width: 450px;
+  padding: 1.5rem 1rem;
   text-align: center;
-  /* Căn giữa nội dung bên trong thẻ */
-  align-items: center;
+  margin: 1rem auto;
+}
+
+#typing-label {
+  display: block;
+  min-height: 3rem;
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 1.5rem;
+  line-height: 1.4;
+}
+
+.input-group {
+  display: flex;
+  gap: 0.5rem;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 0.4rem;
+  border-radius: 1rem;
+  border: 1px solid var(--glass-border);
+  width: 100%;
+}
+
+#check_month {
+  flex: 1;
+  min-width: 0;
+  background: transparent;
+  border: none;
+  color: #fff;
+  padding: 0.8rem 1rem;
+  font-size: 1rem;
+  outline: none;
+}
+
+#check_month::placeholder {
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.btn-check {
+  background: var(--primary);
+  color: var(--navy-deep);
+  border: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 0.8rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition:
+    transform 0.2s,
+    background 0.2s;
+}
+
+.btn-check:hover {
+  background: #fff;
+  transform: translateY(-2px);
+}
+
+/* ===================================================
+   INVITATION CARDS
+   =================================================== */
+.invitations {
+  width: 90%;
+  max-width: 450px;
+  margin: 2rem auto;
 }
 
 .card-invitation {
-  background: #ce9494;
-  border: 1px solid #eee;
   display: none;
-  border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  padding: 20px;
-  width: 300px;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 107, 157, 0.15),
+    rgba(10, 10, 31, 1)
+  );
+  border: 1px solid var(--glass-border);
+  padding: 2.5rem 2rem;
+  border-radius: 2rem;
   text-align: center;
-  transition: transform 0.3s ease;
-  margin-bottom: 20px;
+  animation: fadeIn 0.5s ease-out;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 }
 
-.card-invitation:hover {
-  transform: scale(1.1);
-  /* Phóng to khi hover */
-  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2);
-  /* Bóng đậm hơn */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.card-invitation p {
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+  line-height: 1.5;
+  color: #eee;
 }
 
 .card-invitation button {
-  background: #ff4e8a;
-  color: white;
+  background: var(--secondary);
+  color: #fff;
   border: none;
-  padding: 10px 18px;
-  border-radius: 8px;
+  padding: 1rem 2.5rem;
+  border-radius: 100px;
+  font-size: 1.1rem;
+  font-weight: bold;
   cursor: pointer;
-  transition: background 0.3s ease;
+  transition: all 0.3s;
+  box-shadow: 0 5px 15px rgba(255, 107, 157, 0.3);
 }
 
 .card-invitation button:hover {
-  background: #e63d7a;
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 8px 25px rgba(255, 107, 157, 0.5);
 }
 
-.card-hidden {
-  opacity: 0;
-  transform: scale(0.9);
-  display: none;
-}
-
-/* ===== PASSWORD MODAL CSS ===== */
-/* Modal mật khẩu - Component tái sử dụng */
+/* ===================================================
+   PASSWORD MODAL
+   =================================================== */
 .password-modal {
   display: none;
   position: fixed;
-  z-index: 2000;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  animation: fadeIn 0.3s ease;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(10px);
+  z-index: 1000;
+  align-items: center;
+  justify-content: center;
 }
 
 .password-modal-content {
-  background-color: #fff;
-  margin: 15% auto;
-  padding: 0;
-  border-radius: 15px;
   width: 90%;
   max-width: 400px;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-  animation: slideIn 0.3s ease;
+  background: var(--navy-light);
+  border: 1px solid var(--glass-border);
+  border-radius: 2rem;
   overflow: hidden;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
 }
 
 .password-modal-header {
-  background: linear-gradient(135deg, #ff6b9d, #ff8fab);
-  color: white;
-  padding: 20px;
+  padding: 1.5rem;
+  background: linear-gradient(to right, var(--secondary), #ff4e8a);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -280,193 +343,58 @@ a#profileLink:hover {
 
 .password-modal-header h3 {
   margin: 0;
-  font-size: 1.3em;
-  font-weight: 600;
-}
-
-.close-password-modal {
-  background: none;
-  border: none;
-  color: white;
-  font-size: 24px;
-  cursor: pointer;
-  padding: 0;
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: background-color 0.3s ease;
-}
-
-.close-password-modal:hover {
-  background-color: rgba(255, 255, 255, 0.2);
-}
-
-/* Lottie container trong modal */
-.password-modal .lottie-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 20px;
-  background: linear-gradient(135deg, #f8f9fa, #e9ecef);
-  border-radius: 10px;
-  margin: 10px 20px;
-}
-
-.password-modal .lottie-container lottie-player {
-  max-width: 100%;
-  height: auto;
+  font-size: 1.2rem;
 }
 
 .password-modal-body {
-  padding: 25px;
-}
-
-.password-modal-body p {
-  margin: 0 0 20px 0;
-  color: #666;
-  font-size: 1em;
-  line-height: 1.5;
+  padding: 2rem;
 }
 
 #passwordInput {
   width: 100%;
-  padding: 12px 15px;
-  border: 2px solid #e0e0e0;
-  border-radius: 8px;
-  font-size: 16px;
-  margin-bottom: 20px;
-  transition: border-color 0.3s ease, box-shadow 0.3s ease;
-  box-sizing: border-box;
-}
-
-#passwordInput:focus {
-  outline: none;
-  border-color: #ff6b9d;
-  box-shadow: 0 0 0 3px rgba(255, 107, 157, 0.1);
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid var(--glass-border);
+  border-radius: 1rem;
+  padding: 1rem;
+  color: #fff;
+  margin-bottom: 1.5rem;
+  font-size: 1.1rem;
+  text-align: center;
 }
 
 .password-actions {
   display: flex;
-  gap: 10px;
-  justify-content: flex-end;
+  gap: 1rem;
 }
 
-.btn-cancel,
 .btn-submit {
-  padding: 10px 20px;
+  flex: 1;
+  background: var(--primary);
+  color: var(--navy-deep);
+  padding: 1rem;
+  border-radius: 1rem;
+  font-weight: bold;
   border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  font-size: 14px;
-  font-weight: 600;
-  transition: all 0.3s ease;
 }
 
 .btn-cancel {
-  background-color: #f5f5f5;
-  color: #666;
+  flex: 1;
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  padding: 1rem;
+  border-radius: 1rem;
+  border: none;
 }
 
-.btn-cancel:hover {
-  background-color: #e0e0e0;
-  transform: translateY(-1px);
-}
-
-.btn-submit {
-  background: linear-gradient(135deg, #ff6b9d, #ff8fab);
-  color: white;
-}
-
-.btn-submit:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 5px 15px rgba(255, 107, 157, 0.4);
-}
-
-.password-error {
-  color: #e74c3c;
-  font-size: 14px;
-  margin-top: 10px;
-  text-align: center;
-  min-height: 20px;
-}
-
-/* Password Modal Animations */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
+/* ===================================================
+   RESPONSIVE
+   =================================================== */
+@media (max-width: 600px) {
+  .marquee h1 {
+    font-size: 1rem;
   }
-
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes slideIn {
-  from {
-    transform: translateY(-50px);
-    opacity: 0;
-  }
-
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-
-@keyframes shake {
-
-  0%,
-  100% {
-    transform: translateX(0);
-  }
-
-  25% {
-    transform: translateX(-5px);
-  }
-
-  75% {
-    transform: translateX(5px);
-  }
-}
-
-/* Responsive cho password modal */
-@media (max-width: 480px) {
-  .password-modal-content {
-    margin: 20% auto;
-    width: 95%;
-  }
-
-  .password-modal-header {
-    padding: 15px;
-  }
-
-  .password-modal-header h3 {
-    font-size: 1.1em;
-  }
-
-  .password-modal-body {
-    padding: 20px;
-  }
-
-  .password-actions {
-    flex-direction: column;
-  }
-
-  .btn-cancel,
-  .btn-submit {
-    width: 100%;
-  }
-
-  .password-modal .lottie-container {
-    padding: 15px;
-    margin: 5px 15px;
-  }
-
-  .password-modal .lottie-container lottie-player {
-    width: 200px !important;
-    height: 100px !important;
+  .lottie-container lottie-player {
+    width: 100% !important;
+    height: auto !important;
   }
 }
